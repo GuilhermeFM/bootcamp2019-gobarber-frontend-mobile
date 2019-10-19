@@ -36,7 +36,8 @@
     "react-native/sort-styles": "off",
     "global-require": "off",
     "react-native/no-raw-text": "off",
-    "no-console": ["error", { "allow": ["tron"] }]
+    "no-console": ["error", { "allow": ["tron"] }],
+    "react/jsx-props-no-spreading": "off"
   },
   "settings": {
     "import/resolver": {
