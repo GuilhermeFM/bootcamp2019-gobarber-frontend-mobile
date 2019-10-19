@@ -5,6 +5,10 @@ import styled from 'styled-components/native';
 import Input from '~/components/Input';
 import Button from '~/components/Button';
 
+export const ScrollingContainer = styled.ScrollView.attrs({
+  contentContainerStyle: { flexGrow: 1 },
+})``;
+
 export const Container = styled.KeyboardAvoidingView.attrs({
   enabled: Platform.OS === 'ios',
   behavior: 'padding',
@@ -13,6 +17,7 @@ export const Container = styled.KeyboardAvoidingView.attrs({
   justify-content: center;
   align-items: center;
   padding: 0 30px;
+  padding-top: 48px;
 `;
 
 export const Form = styled.View`
