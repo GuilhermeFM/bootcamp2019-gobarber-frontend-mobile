@@ -15,7 +15,7 @@ import {
   SignLinkText,
 } from './styles';
 
-export default function SignIn() {
+export default function SignIn({ navigation }) {
   function defineStatusBar() {
     if (Platform.OS === 'android' && Platform.Version > 22) {
       return (
@@ -44,16 +44,18 @@ export default function SignIn() {
               autoCapitalize="none"
               placeholder="Digite seu email"
             />
-
             <FormInput
               icon="lock-outline"
               secureTextEntry
               placeholder="Digite sua senha"
             />
-
             <SubmitButton onPress={() => {}}>Acessar</SubmitButton>
           </Form>
-          <SignLink onPress={() => {}}>
+          <SignLink
+            onPress={() => {
+              navigation.navigate('SignUp');
+            }}
+          >
             <SignLinkText>Criar conta gratuita</SignLinkText>
           </SignLink>
         </Container>
