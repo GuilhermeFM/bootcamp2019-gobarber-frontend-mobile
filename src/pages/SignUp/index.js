@@ -1,5 +1,6 @@
 import React, { useRef, useEffect } from 'react';
 import { Image, Keyboard } from 'react-native';
+import PropTypes from 'prop-types';
 
 import logo from '~/assets/logo.png';
 import Background from '~/components/Background';
@@ -83,3 +84,9 @@ export default function SignUp({ navigation }) {
     </Background>
   );
 }
+
+SignUp.propTypes = {
+  navigation: PropTypes.shape({
+    navigate: PropTypes.func.isRequired,
+  }).isRequired,
+};
