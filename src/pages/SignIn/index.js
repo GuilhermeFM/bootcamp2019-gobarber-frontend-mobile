@@ -1,5 +1,5 @@
-import React from 'react';
-import { Image } from 'react-native';
+import React, { useRef, useEffect } from 'react';
+import { Image, Keyboard } from 'react-native';
 
 import logo from '~/assets/logo.png';
 
@@ -16,9 +16,26 @@ import {
 } from './styles';
 
 export default function SignIn({ navigation }) {
+  const passwordRef = useRef();
+  const refScrollingContainer = useRef();
+
+  useEffect(() => {
+    const keyboardDidShowListenner = Keyboard.addListener(
+      'keyboardDidShow',
+      () => {
+        refScrollingContainer.current.scrollToEnd({ animated: true });
+      }
+    );
+    return () => {
+      keyboardDidShowListenner.remove();
+    };
+  }, []);
+
+  function handleSubmit() {}
+
   return (
     <Background>
-      <ScrollingContainer>
+      <ScrollingContainer ref={refScrollingContainer}>
         <Container>
           <Image source={logo} />
           <Form>
@@ -28,14 +45,21 @@ export default function SignIn({ navigation }) {
               autoCorrect={false}
               autoCapitalize="none"
               placeholder="Digite seu email"
+              blurOnSubmit={false}
+              returnKeyType="next"
+              onSubmitEditing={() => passwordRef.current.focus()}
             />
+
             <FormInput
               icon="lock-outline"
               secureTextEntry
               placeholder="Digite sua senha"
+              ref={passwordRef}
+              returnKeyType="send"
             />
-            <SubmitButton onPress={() => {}}>Acessar</SubmitButton>
+            <SubmitButton onPress={handleSubmit}>Acessar</SubmitButton>
           </Form>
+
           <SignLink
             onPress={() => {
               navigation.navigate('SignUp');
