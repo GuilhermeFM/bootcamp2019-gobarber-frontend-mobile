@@ -22,8 +22,16 @@
     "ecmaVersion": 2018,
     "sourceType": "module"
   },
-  "plugins": ["react", "react-native", "jsx-a11y", "import", "prettier"],
+  "plugins": [
+    "react",
+    "react-native",
+    "react-hooks",
+    "jsx-a11y",
+    "import",
+    "prettier"
+  ],
   "rules": {
+    "camelcase": "off",
     "prettier/prettier": "error",
     "react/jsx-filename-extension": [
       "error",
@@ -32,12 +40,15 @@
     "import/prefer-default-export": "off",
     "no-unused-vars": ["error", { "argsIgnorePattern": "^_" }],
     "react/jsx-one-expression-per-line": "off",
-    "react-native/no-color-literals": "off",
-    "react-native/sort-styles": "off",
     "global-require": "off",
     "react-native/no-raw-text": "off",
+    "no-param-reassign": "off",
+    "no-underscore-dangle": "off",
     "no-console": ["error", { "allow": ["tron"] }],
-    "react/jsx-props-no-spreading": "off"
+    "react-hooks/rules-of-hooks": "error",
+    "react-hooks/exhaustive-deps": "warn",
+    "react/jsx-props-no-spreading": "off",
+    "prefer-object-spread": "off"
   },
   "settings": {
     "import/resolver": {
