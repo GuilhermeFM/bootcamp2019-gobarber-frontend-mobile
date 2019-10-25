@@ -1,6 +1,6 @@
 import React, { useRef, useEffect, useState } from 'react';
 import { Image, Keyboard } from 'react-native';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
 
 import logo from '~/assets/logo.png';
@@ -25,6 +25,8 @@ export default function SignIn({ navigation }) {
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+
+  const loading = useSelector(state => state.auth.loading);
 
   useEffect(() => {
     const keyboardDidShowListenner = Keyboard.addListener(
@@ -70,7 +72,9 @@ export default function SignIn({ navigation }) {
               value={password}
               onChangeText={setPassword}
             />
-            <SubmitButton onPress={handleSubmit}>Acessar</SubmitButton>
+            <SubmitButton loading={loading} onPress={handleSubmit}>
+              Acessar
+            </SubmitButton>
           </Form>
 
           <SignLink

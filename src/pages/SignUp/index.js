@@ -1,9 +1,12 @@
-import React, { useRef, useEffect } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import { Image, Keyboard } from 'react-native';
+import { useDispatch, useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
 
 import logo from '~/assets/logo.png';
 import Background from '~/components/Background';
+
+import { signUpRequest } from '~/store/modules/auth/actions';
 
 import {
   ScrollingContainer,
@@ -16,9 +19,17 @@ import {
 } from './styles';
 
 export default function SignUp({ navigation }) {
+  const dispatch = useDispatch();
+
   const emailRef = useRef();
   const passwordRef = useRef();
   const refScrollingContainer = useRef();
+
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+
+  const loading = useSelector(state => state.auth.loading);
 
   useEffect(() => {
     const keyboardDidShowListenner = Keyboard.addListener(
@@ -33,7 +44,9 @@ export default function SignUp({ navigation }) {
     };
   }, []);
 
-  function handleSubmit() {}
+  function handleSubmit() {
+    dispatch(signUpRequest(name, email, password));
+  }
 
   return (
     <Background>
@@ -49,6 +62,8 @@ export default function SignUp({ navigation }) {
               blurOnSubmit={false}
               returnKeyType="next"
               onSubmitEditing={() => emailRef.current.focus()}
+              value={name}
+              onChangeText={setName}
             />
 
             <FormInput
@@ -61,6 +76,8 @@ export default function SignUp({ navigation }) {
               blurOnSubmit={false}
               returnKeyType="next"
               onSubmitEditing={() => passwordRef.current.focus()}
+              value={email}
+              onChangeText={setEmail}
             />
 
             <FormInput
@@ -68,9 +85,13 @@ export default function SignUp({ navigation }) {
               secureTextEntry
               placeholder="Digite sua senha"
               ref={passwordRef}
+              value={password}
+              onChangeText={setPassword}
             />
 
-            <SubmitButton onPress={handleSubmit}>Acessar</SubmitButton>
+            <SubmitButton loading={loading} onPress={handleSubmit}>
+              Criar conta
+            </SubmitButton>
           </Form>
           <SignLink
             onPress={() => {
