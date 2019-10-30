@@ -18,6 +18,7 @@ export function* signIn({ payload }) {
 
     if (user.provider) {
       Alert.alert('Usuário invalido', 'Usuário não pode ser prestador');
+      yield put(signFailure());
       return;
     }
 
