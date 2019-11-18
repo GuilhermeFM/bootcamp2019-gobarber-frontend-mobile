@@ -46,12 +46,12 @@ export default (isSigned = false) =>
             Profile,
           },
           {
-            // tabBarComponent: props =>
-            //   Platform.OS === 'android' ? (
-            //     <CustomBottomBar {...props} />
-            //   ) : (
-            //     <BottomTabBar {...props} />
-            //   ),
+            tabBarComponent: props =>
+              Platform.OS === 'android' ? (
+                <CustomBottomBar {...props} />
+              ) : (
+                <BottomTabBar {...props} />
+              ),
             tabBarOptions: {
               keyboardHidesTabBar: false,
               activeTintColor: '#FFF',

@@ -7,7 +7,7 @@ import AsyncStorage from '@react-native-community/async-storage';
 // multiple connections on each app refresh
 
 if (__DEV__) {
-  const tron = Reactotron.configure({ host: '192.168.15.3' })
+  const tron = Reactotron.configure({ host: '192.168.15.8' })
     .useReactNative()
     .setAsyncStorageHandler(AsyncStorage)
     .use(reactotronRedux())
