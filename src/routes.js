@@ -58,10 +58,6 @@ export default (isSigned = false) =>
                 },
                 {
                   defaultNavigationOptions: {
-                    headerStyle: {
-                      marginTop:
-                        Platform.OS === 'ios' ? 0 : StatusBar.currentHeight,
-                    },
                     headerTransparent: true,
                     headerTintColor: '#FFF',
                     headerLeftContainerStyle: {

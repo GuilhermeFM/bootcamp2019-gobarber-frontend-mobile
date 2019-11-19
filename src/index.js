@@ -1,5 +1,5 @@
 import React from 'react';
-import { Platform, StatusBar } from 'react-native';
+import { StatusBar } from 'react-native';
 import { PersistGate } from 'redux-persist/integration/react';
 import { Provider } from 'react-redux';
 
@@ -13,15 +13,7 @@ export default function Index() {
   return (
     <Provider store={store}>
       <PersistGate persistor={persistor}>
-        {Platform.OS === 'android' && Platform.Version > 22 ? (
-          <StatusBar
-            translucent
-            barStyle="dark-content"
-            backgroundColor="transparent"
-          />
-        ) : (
-          <StatusBar translucent backgroundColor="rgba(0, 0, 0, 0.1)" />
-        )}
+        <StatusBar barStyle="dark-content" backgroundColor="#7159c1" />
         <App />
       </PersistGate>
     </Provider>
