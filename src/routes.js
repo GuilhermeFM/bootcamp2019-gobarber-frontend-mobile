@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Keyboard, Platform, StatusBar } from 'react-native';
+import { Keyboard, Platform, View } from 'react-native';
 import { createAppContainer, createSwitchNavigator } from 'react-navigation';
 import { createBottomTabNavigator, BottomTabBar } from 'react-navigation-tabs';
 import { createStackNavigator } from 'react-navigation-stack';
@@ -57,6 +57,7 @@ export default (isSigned = false) =>
                   Confirm,
                 },
                 {
+                  headerLayoutPreset: 'center',
                   defaultNavigationOptions: {
                     headerTransparent: true,
                     headerTintColor: '#FFF',
