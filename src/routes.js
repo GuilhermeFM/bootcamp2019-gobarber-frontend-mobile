@@ -82,15 +82,15 @@ export default (isSigned = false) =>
             Profile,
           },
           {
-            tabBarComponent: props =>
-              Platform.OS === 'android' ? (
-                <CustomBottomBar {...props} />
-              ) : (
-                <BottomTabBar {...props} />
-              ),
+            // tabBarComponent: props =>
+            //   Platform.OS === 'android' ? (
+            //     <CustomBottomBar {...props} />
+            //   ) : (
+            //     <BottomTabBar {...props} />
+            //   ),
             resetOnBlur: true,
             tabBarOptions: {
-              keyboardHidesTabBar: false,
+              keyboardHidesTabBar: true,
               activeTintColor: '#FFF',
               inactiveTintColor: 'rgba(255, 255, 255, 0.6)',
               style: {
